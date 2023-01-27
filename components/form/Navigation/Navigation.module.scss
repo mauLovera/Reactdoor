@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+
+  button {
+    background: none;
+    border: none;
+    color: var(--clr-secondary);
+    cursor: pointer;
+  }
+}
+
+.inactive {
+  color: var(--clr-placeholder);
+  cursor: default;
+}
+
+.required {
+  color: var(--clr-neutral-light);
+}

@@ -28,18 +28,7 @@ export default function FormContainer() {
       <div key={'3'}>Hello</div>,
     ],
   })
-
-  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setActiveFormData((prev) => ({
-      data: { ...prev.data, [e.target.name]: e.target.value },
-      errors: { ...prev.errors },
-    }))
-  }
-
-  function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-  }
-
+  
   const values = {
     activeFormData,
     handleInputChange,
@@ -52,6 +41,17 @@ export default function FormContainer() {
     back,
     goTo,
     getProgress,
+  }
+
+  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setActiveFormData((prev) => ({
+      data: { ...prev.data, [e.target.name]: e.target.value },
+      errors: { ...prev.errors },
+    }))
+  }
+
+  function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
   }
 
   return (
