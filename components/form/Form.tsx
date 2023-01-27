@@ -1,16 +1,22 @@
-import styles from './Form.module.scss'
+import { useContext } from 'react'
+import { FormContext } from './FormContainer'
+import { FormContextType } from './types'
 
 import ProgressBar from './ProgressBar/ProgressBar'
 import Navigation from './Navigation/Navigation'
-import Fields from './Fields/Fields'
 import Submit from './Submit/Submit'
 
+import styles from './Form.module.scss'
+
 export default function Form() {
+  const { handleFormSubmit, currentView } = useContext(
+    FormContext
+  ) as FormContextType
   return (
-    <form className={styles.container}>
-      <ProgressBar/>
+    <form className={styles.container} onSubmit={handleFormSubmit} noValidate>
+      <ProgressBar />
       <Navigation />
-      <Fields />
+      {currentView}
       <Submit />
     </form>
   )

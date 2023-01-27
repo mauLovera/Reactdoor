@@ -4,7 +4,7 @@ export type FormDataType = {
   location: string
   startDate: string
   endDate: string
-  current: string
+  current: string 
   basePay: string
   rating: string
   yearsOfExperience: string
@@ -13,7 +13,7 @@ export type FormDataType = {
   passwordConfirmation: string
 }
 
-export type FormErrorType = {
+export type FormErrorsType = {
   jobTitle: string
   location: string
   startDate: string
@@ -29,7 +29,7 @@ export type FormErrorType = {
 
 export type FormType = {
   data: FormDataType
-  errors: FormErrorType
+  errors: FormErrorsType
 }
 
 export type FormContextType = {

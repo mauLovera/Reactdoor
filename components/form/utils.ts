@@ -4,7 +4,7 @@ export const INITIAL_FORM_DATA = {
     location: '',
     startDate: '',
     endDate: '',
-    current: '',
+    current: 'true',
     basePay: '',
     rating: '',
     yearsOfExperience: '',

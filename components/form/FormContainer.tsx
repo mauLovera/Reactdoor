@@ -5,6 +5,7 @@ import React, { useState, createContext } from 'react'
 import { FormContextType, FormType } from './types'
 import { INITIAL_FORM_DATA } from './utils'
 import useMultiViewForm from 'hooks/useMultiViewForm'
+import WelcomeView from './views/WelcomeView'
 
 export const FormContext = createContext<FormContextType | null>(null)
 
@@ -25,7 +26,7 @@ export default function FormContainer() {
     getProgress,
   } = useMultiViewForm({
     views: [
-      <div key={'1'}>Hello</div>,
+      <WelcomeView key={'1'} />,
       <div key={'2'}>Hello</div>,
       <div key={'3'}>Hello</div>,
     ],
@@ -46,22 +47,25 @@ export default function FormContainer() {
     getProgress,
   }
 
-  // * handle functions * // 
+  // * handle functions * //
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setActiveFormData((prev) => ({
-      data: { ...prev.data, [e.target.name]: e.target.value },
-      errors: { ...prev.errors },
+    const { name, value, type, checked } = e.target
+    setActiveFormData((previousFormData) => ({
+      data: {
+        ...previousFormData.data,
+        [name]: type === 'checkbox' ? checked : value,
+      },
+      errors: { ...previousFormData.errors },
     }))
   }
 
   function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    next()
   }
 
   return (
-    <FormContext.Provider
-      value={values}
-    >
+    <FormContext.Provider value={values}>
       <Form />
     </FormContext.Provider>
   )

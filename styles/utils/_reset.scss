@@ -18,7 +18,8 @@ figure,
 blockquote,
 dl,
 dd,
-button {
+button,
+input[type='checkbox'] {
   margin: 0;
   padding: 0;
   font-weight: unset;
