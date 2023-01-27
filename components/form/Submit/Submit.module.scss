@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    background-color: var(--clr-secondary);
+    color: var(--clr-base);
+
+    border: none;
+    border-radius: 3px;
+
+    padding-inline: 24px;
+    padding-block: 8px;
+    margin-top: 16px;
+    font-weight: var(--fw-bold);
+    transition: background-color 0.5s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--clr-button-hover);
+    }
+  }
+}
