@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { FormContext } from '../FormContainer'
 import { FormContextType, FormDataType, FormErrorsType } from '../types'
 import styles from './Field.module.scss'
+import { renderError } from './utils'
 
 interface Props {
   name: string
@@ -29,20 +30,6 @@ export default function Field({
     activeFormData: { data, errors },
     setActiveFormData,
   } = useContext(FormContext) as FormContextType
-
-  function renderError(type: string) {
-    switch (type) {
-      case 'text':
-        if (data[name as keyof FormDataType]?.trim() === '') {
-          return errors[name as keyof FormErrorsType]
-        }
-        return ''
-      case 'password':
-        return errors[name as keyof FormErrorsType]
-      default:
-        return
-    }
-  }
 
   useEffect(() => {
     if (new Date(data.startDate) > new Date(data.endDate)) {
@@ -75,7 +62,9 @@ export default function Field({
         min={min ? min : ''}
         max={max ? max : ''}
       />
-      <p className={styles.errorMessage}>{renderError(type)}</p>
+      <p className={styles.errorMessage}>
+        {renderError(type, name, data, errors)}
+      </p>
     </div>
   )
 }
