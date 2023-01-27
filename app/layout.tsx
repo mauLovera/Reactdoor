@@ -1,7 +1,6 @@
 import '@/styles/globals.scss'
-
-import Header from '@/components/layout/Header/Header'
 import { Lato } from '@next/font/google'
+import Header from '@/components/layout/Header/Header'
 
 interface Props {
   children: React.ReactNode
