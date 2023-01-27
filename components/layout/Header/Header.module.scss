@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  background-color: var(--clr-base);
+  padding-inline: 32px;
+
+  nav {
+    width: 1200px;
+
+    h1 {
+      font-size: var(--fs-h1);
+      color: var(--clr-primary);
+      font-weight: var(--fw-bold);
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    padding-inline: 16px;
+  }
+}
