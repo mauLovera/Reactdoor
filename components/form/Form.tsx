@@ -8,7 +8,8 @@ import Submit from './Submit/Submit'
 export default function Form() {
   return (
     <form className={styles.container}>
-      <ProgressBar />
+      {/* TODO: Change progress with dynamic value */}
+      <ProgressBar progress={'100%'}/>
       <Navigation />
       <Fields />
       <Submit />
