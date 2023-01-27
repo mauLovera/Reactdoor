@@ -31,3 +31,17 @@ export type FormType = {
   data: FormDataType
   errors: FormErrorType
 }
+
+export type FormContextType = {
+  activeFormData: FormType
+  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  handleFormSubmit: (e: React.FormEvent<HTMLFormElement>) => void
+  currentIndex: number
+  currentView: React.ReactNode
+  isStart: boolean
+  isEnd: boolean
+  next: () => void
+  back: () => void
+  goTo: (index: number) => void
+  getProgress: () => number
+}

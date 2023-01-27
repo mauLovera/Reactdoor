@@ -61,7 +61,6 @@ export default function useMultiViewForm({ views }: Props) {
   }
 
   return {
-    views,
     currentIndex,
     currentView: views[currentIndex],
     isStart: currentIndex === 0,

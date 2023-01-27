@@ -1,9 +1,11 @@
 import styles from './ProgressBar.module.scss'
+import { useContext } from 'react'
+import { FormContext } from '../FormContainer'
+import { FormContextType } from '../types'
 
-interface Props {
-  progress: string
-}
-
-export default function ProgressBar({ progress }: Props) {
-  return <div className={styles.container} style={{ width: `${progress}%` }} />
+export default function ProgressBar() {
+  const { getProgress } = useContext(FormContext) as FormContextType
+  return (
+    <div className={styles.container} style={{ width: `${getProgress()}%` }} />
+  )
 }

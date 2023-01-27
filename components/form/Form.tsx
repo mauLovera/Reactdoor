@@ -8,7 +8,7 @@ import Submit from './Submit/Submit'
 export default function Form() {
   return (
     <form className={styles.container}>
-      <ProgressBar progress={'100'}/>
+      <ProgressBar/>
       <Navigation />
       <Fields />
       <Submit />
