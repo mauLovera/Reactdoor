@@ -26,3 +26,10 @@ export const INITIAL_FORM_DATA = {
     passwordConfirmation: '',
   }
 }
+
+// * Date String * //
+const today = new Date()
+const year = String(today.getFullYear())
+const month = String(today.getMonth()) + 1
+const day = String(today.getDate())
+export const currentDate = `${year}-${month}-${day}`

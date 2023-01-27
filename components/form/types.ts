@@ -34,6 +34,7 @@ export type FormType = {
 
 export type FormContextType = {
   activeFormData: FormType
+  setActiveFormData: React.Dispatch<React.SetStateAction<FormType>>
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   handleFormSubmit: (e: React.FormEvent<HTMLFormElement>) => void
   currentIndex: number

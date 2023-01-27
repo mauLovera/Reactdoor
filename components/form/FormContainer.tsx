@@ -35,6 +35,7 @@ export default function FormContainer() {
   // * context values * //
   const values = {
     activeFormData,
+    setActiveFormData,
     handleInputChange,
     handleFormSubmit,
     currentIndex,

@@ -2,6 +2,7 @@ import { useContext } from 'react'
 import Field from '../Field/Field'
 import { FormContext } from '../FormContainer'
 import { FormContextType } from '../types'
+import { currentDate } from '../utils'
 import styles from './FormView.module.scss'
 
 interface Props {
@@ -13,7 +14,9 @@ interface Props {
 }
 
 export default function WelcomeView() {
-  const { activeFormData } = useContext(FormContext) as FormContextType
+  const {
+    activeFormData: { data },
+  } = useContext(FormContext) as FormContextType
   return (
     <div className={styles.container}>
       <h4 className={styles.header}>Welcome to Reactdoor</h4>
@@ -32,20 +35,27 @@ export default function WelcomeView() {
         label="Location*"
         placeholder="City or Metro Area"
       />
-      <Field name="startDate" type="date" label="Start Date*" placeholder="" />
+      <Field
+        name="startDate"
+        type="date"
+        label="Start Date*"
+        placeholder=""
+        max={data.endDate ? data.endDate : currentDate}
+      />
       <Field
         name="current"
         type="checkbox"
-        label="I am currently working here: "
+        label="I am currently working here:"
         placeholder=""
         defaultChecked
       />
-      {!activeFormData.data.current && (
+      {!data.current && (
         <Field
           name="endDate"
           type="date"
           label="End Date*"
           placeholder=""
+          max={currentDate}
         />
       )}
     </div>

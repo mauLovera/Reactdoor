@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { FormContext } from '../FormContainer'
 import { FormContextType, FormDataType, FormErrorsType } from '../types'
 import styles from './Field.module.scss'
@@ -10,6 +10,8 @@ interface Props {
   placeholder: string
   autoFocus?: boolean
   defaultChecked?: boolean
+  min?: string
+  max?: string
 }
 
 export default function Field({
@@ -18,11 +20,14 @@ export default function Field({
   label,
   placeholder,
   autoFocus,
-  defaultChecked
+  defaultChecked,
+  min,
+  max,
 }: Props) {
   const {
     handleInputChange,
     activeFormData: { data, errors },
+    setActiveFormData,
   } = useContext(FormContext) as FormContextType
 
   function renderError(type: string) {
@@ -39,8 +44,24 @@ export default function Field({
     }
   }
 
+  useEffect(() => {
+    if (new Date(data.startDate) > new Date(data.endDate)) {
+      setActiveFormData((previousFormData) => ({
+        data: {
+          ...previousFormData.data,
+          startDate: previousFormData.data.endDate,
+        },
+        errors: { ...previousFormData.errors },
+      }))
+    }
+  }, [data.endDate, data.startDate, setActiveFormData])
+
   return (
-    <div className={type !== 'checkbox' ? styles.container : styles.inlineContainer}>
+    <div
+      className={
+        type !== 'checkbox' ? styles.container : styles.inlineContainer
+      }
+    >
       <label htmlFor={`${name}-input`}>{label}</label>
       <input
         name={name}
@@ -51,6 +72,8 @@ export default function Field({
         id={name}
         onChange={handleInputChange}
         defaultChecked={defaultChecked}
+        min={min ? min : ''}
+        max={max ? max : ''}
       />
       <p className={styles.errorMessage}>{renderError(type)}</p>
     </div>
