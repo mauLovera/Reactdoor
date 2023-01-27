@@ -66,6 +66,7 @@ function validateEmptyFields(
           [key]: emptyField[key as keyof typeof emptyField],
         },
       }))
+      console.log(isValidForm)
       isValidForm = false
     }
   }

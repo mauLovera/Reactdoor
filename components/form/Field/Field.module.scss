@@ -25,6 +25,7 @@
       color: var(--clr-placeholder);
     }
   }
+
 }
 
 .inlineContainer {
@@ -39,6 +40,10 @@
     background-color: var(--clr-secondary);
     top: 1.5px;
   }
+}
+
+.numberInput {
+  position: relative;
 }
 
 .errorInput {

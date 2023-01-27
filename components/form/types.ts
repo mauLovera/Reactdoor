@@ -7,8 +7,8 @@ export type FormDataType = {
   endDate: string
   current: string
   basePay: string
-  rating: string
   yearsOfExperience: string
+  rating: string
   username: string
   password: string
   passwordConfirmation: string
@@ -22,8 +22,8 @@ export type FormErrorsType = {
   endDate: string
   current: string
   basePay: string
-  rating: string
   yearsOfExperience: string
+  rating: string
   username: string
   password: string
   passwordConfirmation: string
