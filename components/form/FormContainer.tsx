@@ -6,6 +6,7 @@ import { FormContextType, FormType } from './types'
 import { INITIAL_FORM_DATA } from './utils'
 import useMultiViewForm from 'hooks/useMultiViewForm'
 import WelcomeView from './views/WelcomeView'
+import { validateForm } from '@/utils/validateForm'
 
 export const FormContext = createContext<FormContextType | null>(null)
 
@@ -61,8 +62,11 @@ export default function FormContainer() {
   }
 
   function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
+    const { data, errors } = activeFormData
     e.preventDefault()
-    next()
+    if (validateForm(data, errors, setActiveFormData)) {
+      next()
+    }
   }
 
   return (

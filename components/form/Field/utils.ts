@@ -12,6 +12,11 @@ export function renderError(
         return errors[name as keyof FormErrorsType]
       }
       return ''
+    case 'date':
+      if (data[name as keyof FormDataType]?.trim() === '') {
+        return errors[name as keyof FormErrorsType]
+      }
+      return ''
     case 'password':
       return errors[name as keyof FormErrorsType]
     default:

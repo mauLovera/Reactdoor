@@ -1,8 +1,8 @@
 import { useContext } from 'react'
-import Field from '../Field/Field'
 import { FormContext } from '../FormContainer'
 import { FormContextType } from '../types'
 import { currentDate } from '../utils'
+import Field from '../Field/Field'
 import styles from './FormView.module.scss'
 
 interface Props {
@@ -34,6 +34,12 @@ export default function WelcomeView() {
         type="text"
         label="Location*"
         placeholder="City or Metro Area"
+      />
+      <Field
+        name="companyName"
+        type="text"
+        label="Company or Employer Name*"
+        placeholder="Company or Employer Name"
       />
       <Field
         name="startDate"

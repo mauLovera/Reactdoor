@@ -40,3 +40,13 @@
     top: 1.5px;
   }
 }
+
+.errorInput {
+  outline: 1px solid var(--clr-error);
+  background-color: var(--clr-error-light);
+}
+
+.errorMessage {
+  color: var(--clr-error);
+  font-size: 14px;
+}

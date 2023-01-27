@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import { FormContext } from '../FormContainer'
 import { FormContextType, FormDataType, FormErrorsType } from '../types'
 import styles from './Field.module.scss'
@@ -61,6 +61,12 @@ export default function Field({
         defaultChecked={defaultChecked}
         min={min ? min : ''}
         max={max ? max : ''}
+        className={
+          errors[name as keyof FormErrorsType] &&
+          data[name as keyof FormDataType]?.trim() === ''
+            ? styles.errorInput
+            : ''
+        }
       />
       <p className={styles.errorMessage}>
         {renderError(type, name, data, errors)}

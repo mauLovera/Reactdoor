@@ -2,9 +2,10 @@ export type FormDataType = {
   _id?: string
   jobTitle: string
   location: string
+  companyName: string
   startDate: string
   endDate: string
-  current: string 
+  current: string
   basePay: string
   rating: string
   yearsOfExperience: string
@@ -16,6 +17,7 @@ export type FormDataType = {
 export type FormErrorsType = {
   jobTitle: string
   location: string
+  companyName: string
   startDate: string
   endDate: string
   current: string
@@ -32,9 +34,13 @@ export type FormType = {
   errors: FormErrorsType
 }
 
+export type SetActiveFormDataType = React.Dispatch<
+  React.SetStateAction<FormType>
+>
+
 export type FormContextType = {
   activeFormData: FormType
-  setActiveFormData: React.Dispatch<React.SetStateAction<FormType>>
+  setActiveFormData: SetActiveFormDataType
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   handleFormSubmit: (e: React.FormEvent<HTMLFormElement>) => void
   currentIndex: number
