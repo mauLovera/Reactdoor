@@ -11,7 +11,7 @@ interface Props {
  * */
 
 export default function useMultiViewForm({ views }: Props) {
-  const [currentIndex, setCurrentIndex] = useState<number>(0)
+  const [currentIndex, setCurrentIndex] = useState<number>(2)
 
   /**
    * @method next

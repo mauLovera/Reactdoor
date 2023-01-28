@@ -1,6 +1,17 @@
 .container {
   padding-inline: 16px;
 
+  .banner {
+    padding-block: 8px;
+    padding-inline: 12px;
+    background-color: var(--clr-neutral-lighter);
+    border-radius: var(--border-radius);
+
+    .subHeader {
+      padding-bottom: 0;
+    }
+  }
+
   .header {
     font-size: var(--fs-h4);
     font-weight: bold;
@@ -9,6 +20,17 @@
   .subHeader {
     padding-block: 8px;
   }
+
+  .section {
+    padding-block: 8px;
+    border-bottom: 1px solid var(--clr-border);
+  }
+
+  .section:last-child {
+    padding-block: 4px;
+    border: unset
+  }
+  
 }
 
 .underline {

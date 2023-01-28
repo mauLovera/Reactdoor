@@ -9,15 +9,15 @@ export const currentDate = `${year}-${month}-${day}`
 
 export const INITIAL_FORM_DATA = {
   data: {
-    jobTitle: '',
-    location: '',
-    companyName: '',
-    startDate: '',
-    endDate: '',
+    jobTitle: 'Software Developer',
+    location: 'Miami, Florida',
+    companyName: 'Glassdoor',
+    startDate: '2023-01-01',
+    endDate: '2021-01-01',
     current: 'true',
-    basePay: '',
-    yearsOfExperience: '',
-    rating: '1',
+    basePay: '80000',
+    yearsOfExperience: '1',
+    rating: '5',
   },
   errors: {
     jobTitle: '',
@@ -43,6 +43,18 @@ export const formLabels = {
   yearsOfExperience: 'Years of Experience*',
   rating: 'Rating (1-5)*',
 }
+
+export const formConfirmLabels = {
+  jobTitle: 'Job Title',
+  location: 'Location',
+  companyName: 'Company or Employer Name',
+  startDate: 'Dates',
+  basePay: 'Base Pay (Yearly: $)',
+  yearsOfExperience: 'Years of Experience',
+  rating: 'Rating (1-5)',
+}
+
+
 
 export function renderError(
   type: string,

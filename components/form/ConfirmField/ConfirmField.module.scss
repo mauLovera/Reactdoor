@@ -1,0 +1,31 @@
+.container {
+  padding-block: 8px;
+  
+  .field {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+
+    h4 {
+      color: var(--clr-neutral-light);
+    }
+
+    p {
+      display: flex;
+      gap: 4px;
+
+      .grey {
+        color: var(--clr-neutral-light);
+      }
+
+    }
+
+    button {
+      background-color: transparent;
+      border: none;
+      color: var(--clr-secondary);
+      cursor: pointer;
+    }
+  }
+}
