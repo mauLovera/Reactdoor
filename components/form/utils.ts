@@ -1,3 +1,5 @@
+import { FormDataType, FormErrorsType } from "./types"
+
 // * Date String * //
 const today = new Date()
 const year = String(today.getFullYear())
@@ -34,4 +36,20 @@ export const INITIAL_FORM_DATA = {
     password: '',
     passwordConfirmation: '',
   },
+}
+
+export function renderError(
+  type: string,
+  name: string,
+  data: FormDataType,
+  errors: FormErrorsType
+) {
+  switch (type) {
+    case 'password':
+      return errors[name as keyof FormErrorsType]
+    default:
+      if (data[name as keyof FormDataType]?.trim() === '') {
+        return errors[name as keyof FormErrorsType]
+      }
+  }
 }

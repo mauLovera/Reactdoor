@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 4px;
+  padding-block: 8px;
+
+  div {
+    display: flex;
+    padding-block: 4px;
+    gap: 4px;
+
+    input {
+      margin: 0;
+    }
+  }
+}

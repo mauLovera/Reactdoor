@@ -1,8 +1,8 @@
 import { useContext, useEffect } from 'react'
 import { FormContext } from '../FormContainer'
 import { FormContextType, FormDataType, FormErrorsType } from '../types'
+import { renderError } from '../utils'
 import styles from './Field.module.scss'
-import { renderError } from './utils'
 
 interface Props {
   name: string
@@ -51,22 +51,22 @@ export default function Field({
     >
       <label htmlFor={`${name}-input`}>{label}</label>
       <input
+        id={name}
         name={name}
         type={type}
         placeholder={placeholder}
-        value={data[name as keyof FormDataType]}
-        autoFocus={autoFocus}
-        id={name}
         onChange={handleInputChange}
-        defaultChecked={defaultChecked}
-        min={min ? min : ''}
-        max={max ? max : ''}
         className={
           errors[name as keyof FormErrorsType] &&
           data[name as keyof FormDataType]?.trim() === ''
             ? styles.errorInput
             : ''
         }
+        autoFocus={autoFocus ?? undefined}
+        value={data[name as keyof FormDataType]}
+        defaultChecked={defaultChecked ?? undefined}
+        min={min ?? undefined}
+        max={max ?? undefined}
       />
       <p className={styles.errorMessage}>
         {renderError(type, name, data, errors)}

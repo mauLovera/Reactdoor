@@ -65,7 +65,7 @@ export default function FormContainer() {
   function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
     const { data, errors } = activeFormData
     e.preventDefault()
-    if (validateForm(data, errors, setActiveFormData)) {
+    if (validateForm(data, errors, setActiveFormData, currentIndex)) {
       next()
     }
   }

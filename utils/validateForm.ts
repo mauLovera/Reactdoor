@@ -7,25 +7,29 @@ import {
 
 const errorMessages = {
   emptyField: {
-    jobTitle: 'Please enter a job title.',
-    location: 'Please enter a city or metro area.',
-    companyName: 'Please enter a company or employer name.',
-    startDate: 'Please enter a start date.',
-    endDate: 'Please enter an end date.',
+    viewOne: {
+      jobTitle: 'Please enter a job title.',
+      location: 'Please enter a city or metro area.',
+      companyName: 'Please enter a company or employer name.',
+      startDate: 'Please enter a start date.',
+      endDate: 'Please enter an end date.',
+    },
+    viewTwo: {
+      basePay: 'Please enter a base pay.',
+      yearsOfExperience: 'Please enter your years of experience.',
+    },
   },
 }
-
-let isValidForm = true
 
 export function validateForm(
   data: FormDataType,
   errors: FormErrorsType,
-  setActiveFormData: SetActiveFormDataType
+  setActiveFormData: SetActiveFormDataType,
+  currentIndex: number
 ) {
+  let isValidForm = true
   resetErrorFields(errors, setActiveFormData)
-  validateEmptyFields(data, setActiveFormData)
-
-  return isValidForm
+  return validateEmptyFields(data, setActiveFormData, currentIndex, isValidForm)
 }
 
 function resetErrorFields(
@@ -42,32 +46,49 @@ function resetErrorFields(
 
 function validateEmptyFields(
   data: FormDataType,
-  setActiveFormData: SetActiveFormDataType
+  setActiveFormData: SetActiveFormDataType,
+  currentIndex: number,
+  isValidForm: boolean
 ) {
   const { emptyField } = errorMessages
 
   /**
-   * Iterate over each field in empty field and set error message if
-   * the field is empty.
+   * Iterate over each field in empty field and set 
+   * error message ifthe field is empty.
    *
-   * If the current key is endDate and data.current is truthy meaning
-   * they currently work there -- skip iteration and dont check for
-   * empty field
-   *
+   * If the current key is endDate and data.current is 
+   * truthy meaning they currently work there -- skip 
+   * iteration and dont check for empty field
    */
 
-  for (const key in emptyField) {
-    if (key === 'endDate' && data['current']) continue
-    if (data[key as keyof typeof emptyField].trim() === '') {
-      setActiveFormData((previousFormData) => ({
-        data: { ...previousFormData.data },
-        errors: {
-          ...previousFormData.errors,
-          [key]: emptyField[key as keyof typeof emptyField],
-        },
-      }))
-      console.log(isValidForm)
-      isValidForm = false
+  if (currentIndex === 0) {
+    for (const key in emptyField.viewOne) {
+      if (key === 'endDate' && data['current']) continue
+      if (data[key as keyof typeof emptyField.viewOne].trim() === '') {
+        setActiveFormData((previousFormData) => ({
+          data: { ...previousFormData.data },
+          errors: {
+            ...previousFormData.errors,
+            [key]: emptyField.viewOne[key as keyof typeof emptyField.viewOne],
+          },
+        }))
+        isValidForm = false
+      }
     }
   }
+  if (currentIndex === 1) {
+    for (const key in emptyField.viewTwo) {
+      if (data[key as keyof typeof emptyField.viewTwo].trim() === '') {
+        setActiveFormData((previousFormData) => ({
+          data: { ...previousFormData.data },
+          errors: {
+            ...previousFormData.errors,
+            [key]: emptyField.viewTwo[key as keyof typeof emptyField.viewTwo],
+          },
+        }))
+        isValidForm = false
+      }
+    }
+  }
+  return isValidForm
 }
