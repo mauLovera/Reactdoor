@@ -5,25 +5,14 @@ import styles from './RadioField.module.scss'
 
 interface Props {
   name: string
-  type: string
   label: string
-  min: string
-  max: string
-  step: string
+  max: number
 }
 
-export default function RadioField({
-  name,
-  type,
-  label,
-  min,
-  max,
-  step,
-}: Props) {
+export default function RadioField({ name, label, max }: Props) {
   const {
     handleInputChange,
-    activeFormData: { data, errors },
-    setActiveFormData,
+    activeFormData: { data },
   } = useContext(FormContext) as FormContextType
 
   return (
@@ -33,38 +22,37 @@ export default function RadioField({
         <input
           type="radio"
           name={name}
-          id={name}
           value={'1'}
           onChange={handleInputChange}
-          defaultChecked={true}
+          defaultChecked={data['rating'] === '1'}
         />
         <input
           type="radio"
           name={name}
-          id={name}
           value={'2'}
           onChange={handleInputChange}
+          defaultChecked={data['rating'] === '2'}
         />
         <input
           type="radio"
           name={name}
-          id={name}
           value={'3'}
           onChange={handleInputChange}
+          defaultChecked={data['rating'] === '3'}
         />
         <input
           type="radio"
           name={name}
-          id={name}
           value={'4'}
           onChange={handleInputChange}
+          defaultChecked={data['rating'] === '4'}
         />
         <input
           type="radio"
           name={name}
-          id={name}
           value={'5'}
           onChange={handleInputChange}
+          defaultChecked={data['rating'] === '5'}
         />
       </div>
     </div>

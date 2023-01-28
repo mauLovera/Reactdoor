@@ -1,8 +1,10 @@
 import { useContext } from 'react'
-import Field from '../Field/Field'
 import { FormContext } from '../FormContainer'
-import RadioField from '../RadioField/RadioField'
 import { FormContextType } from '../types'
+
+import NumberField from '../NumberField/NumberField'
+import RadioField from '../RadioField/RadioField'
+
 import styles from './FormView.module.scss'
 
 export default function SalaryView() {
@@ -17,27 +19,22 @@ export default function SalaryView() {
         <span className={styles.bold}>{data.companyName}</span>?
       </h4>
       <p className={styles.subHeader}></p>
-      <Field
+      <NumberField
         label="Base Pay ($)*"
         name={'basePay'}
-        type={'number'}
         placeholder="0.00"
         min={'0'}
       />
-      <Field
+      <NumberField
         label="Years of Experience*"
         name={'yearsOfExperience'}
-        type={'number'}
         placeholder="e.g. 3"
         min={'0'}
       />
       <RadioField
         label="Rating (1-5)*"
         name={'rating'}
-        type={'select'}
-        min={'1'}
-        max={'5'}
-        step={'1'}
+        max={5}
       />
     </div>
   )

@@ -19,6 +19,13 @@ const errorMessages = {
       yearsOfExperience: 'Please enter your years of experience.',
     },
   },
+  invalidValue: {
+    viewOne: {},
+    viewTwo: {
+      basePay: 'Please enter valid number.',
+      yearsOfExperience: 'Please enter valid years of experience.',
+    },
+  },
 }
 
 export function validateForm(
@@ -29,7 +36,7 @@ export function validateForm(
 ) {
   let isValidForm = true
   resetErrorFields(errors, setActiveFormData)
-  return validateEmptyFields(data, setActiveFormData, currentIndex, isValidForm)
+  return validateDataFields(data, setActiveFormData, currentIndex, isValidForm)
 }
 
 function resetErrorFields(
@@ -44,20 +51,20 @@ function resetErrorFields(
   }
 }
 
-function validateEmptyFields(
+function validateDataFields(
   data: FormDataType,
   setActiveFormData: SetActiveFormDataType,
   currentIndex: number,
   isValidForm: boolean
 ) {
-  const { emptyField } = errorMessages
+  const { emptyField, invalidValue } = errorMessages
 
   /**
-   * Iterate over each field in empty field and set 
+   * Iterate over each field in empty field and set
    * error message ifthe field is empty.
    *
-   * If the current key is endDate and data.current is 
-   * truthy meaning they currently work there -- skip 
+   * If the current key is endDate and data.current is
+   * truthy meaning they currently work there -- skip
    * iteration and dont check for empty field
    */
 
@@ -84,6 +91,21 @@ function validateEmptyFields(
           errors: {
             ...previousFormData.errors,
             [key]: emptyField.viewTwo[key as keyof typeof emptyField.viewTwo],
+          },
+        }))
+        isValidForm = false
+      }
+    }
+    for (const key in invalidValue.viewTwo) {
+      if (
+        data[key as keyof typeof invalidValue.viewTwo].includes('-') 
+      ) {
+        setActiveFormData((previousFormData) => ({
+          data: { ...previousFormData.data },
+          errors: {
+            ...previousFormData.errors,
+            [key]:
+              invalidValue.viewTwo[key as keyof typeof invalidValue.viewTwo],
           },
         }))
         isValidForm = false

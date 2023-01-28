@@ -17,7 +17,7 @@ export const INITIAL_FORM_DATA = {
     current: 'true',
     basePay: '',
     yearsOfExperience: '',
-    rating: '',
+    rating: '1',
     username: '',
     password: '',
     passwordConfirmation: '',
@@ -46,6 +46,8 @@ export function renderError(
 ) {
   switch (type) {
     case 'password':
+      return errors[name as keyof FormErrorsType]
+    case 'number':
       return errors[name as keyof FormErrorsType]
     default:
       if (data[name as keyof FormDataType]?.trim() === '') {
