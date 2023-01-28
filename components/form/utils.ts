@@ -1,4 +1,4 @@
-import { FormDataType, FormErrorsType } from "./types"
+import { FormDataType, FormErrorsType } from './types'
 
 // * Date String * //
 const today = new Date()
@@ -18,9 +18,6 @@ export const INITIAL_FORM_DATA = {
     basePay: '',
     yearsOfExperience: '',
     rating: '1',
-    username: '',
-    password: '',
-    passwordConfirmation: '',
   },
   errors: {
     jobTitle: '',
@@ -32,10 +29,19 @@ export const INITIAL_FORM_DATA = {
     basePay: '',
     yearsOfExperience: '',
     rating: '',
-    username: '',
-    password: '',
-    passwordConfirmation: '',
   },
+}
+
+export const formLabels = {
+  jobTitle: 'Job Title*',
+  location: 'Location*',
+  companyName: 'Company or Employer Name*',
+  startDate: 'Start Date*',
+  current: 'I am currently working here:',
+  endDate: 'End Date*',
+  basePay: 'Base Pay (Yearly: $)*',
+  yearsOfExperience: 'Years of Experience*',
+  rating: 'Rating (1-5)*',
 }
 
 export function renderError(
@@ -49,6 +55,8 @@ export function renderError(
       return errors[name as keyof FormErrorsType]
     case 'number':
       return errors[name as keyof FormErrorsType]
+    case 'checkbox':
+      return
     default:
       if (data[name as keyof FormDataType]?.trim() === '') {
         return errors[name as keyof FormErrorsType]

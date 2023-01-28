@@ -6,6 +6,7 @@ import NumberField from '../NumberField/NumberField'
 import RadioField from '../RadioField/RadioField'
 
 import styles from './FormView.module.scss'
+import { formLabels } from '../utils'
 
 export default function SalaryView() {
   const {
@@ -14,28 +15,24 @@ export default function SalaryView() {
   return (
     <div className={styles.container}>
       <h4 className={styles.header}>
-        What was your experience like as a{' '}
-        <span className={styles.bold}>{data.jobTitle}</span> at{' '}
-        <span className={styles.bold}>{data.companyName}</span>?
+        How was your time as a{' '}
+        <span className={styles.underline}>{data.jobTitle}</span> at{' '}
+        <span className={styles.underline}>{data.companyName}</span>?
       </h4>
       <p className={styles.subHeader}></p>
       <NumberField
-        label="Base Pay ($)*"
         name={'basePay'}
+        label={formLabels.basePay}
         placeholder="0.00"
         min={'0'}
       />
       <NumberField
-        label="Years of Experience*"
         name={'yearsOfExperience'}
+        label={formLabels.yearsOfExperience}
         placeholder="e.g. 3"
         min={'0'}
       />
-      <RadioField
-        label="Rating (1-5)*"
-        name={'rating'}
-        max={5}
-      />
+      <RadioField label={formLabels.rating} name={'rating'} max={5} />
     </div>
   )
 }

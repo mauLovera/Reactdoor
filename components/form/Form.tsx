@@ -13,7 +13,12 @@ export default function Form() {
     FormContext
   ) as FormContextType
   return (
-    <form className={styles.container} onSubmit={handleFormSubmit} noValidate>
+    <form
+      className={styles.container}
+      onSubmit={handleFormSubmit}
+      noValidate
+      autoComplete="off"
+    >
       <ProgressBar />
       <Navigation />
       {currentView}

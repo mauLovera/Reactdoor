@@ -8,6 +8,7 @@ import useMultiViewForm from 'hooks/useMultiViewForm'
 import WelcomeView from './views/WelcomeView'
 import { validateForm } from '@/utils/validateForm'
 import SalaryView from './views/SalaryView'
+import ConfirmationView from './views/ConfirmationView'
 
 export const FormContext = createContext<FormContextType | null>(null)
 
@@ -30,7 +31,7 @@ export default function FormContainer() {
     views: [
       <WelcomeView key={'1'} />,
       <SalaryView key={'2'} />,
-      <div key={'3'}>Hello</div>,
+      <ConfirmationView key={'3'} />,
     ],
   })
 

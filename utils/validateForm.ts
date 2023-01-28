@@ -71,7 +71,7 @@ function validateDataFields(
   if (currentIndex === 0) {
     for (const key in emptyField.viewOne) {
       if (key === 'endDate' && data['current']) continue
-      if (data[key as keyof typeof emptyField.viewOne].trim() === '') {
+      if (data[key as keyof typeof emptyField.viewOne]?.trim() === '') {
         setActiveFormData((previousFormData) => ({
           data: { ...previousFormData.data },
           errors: {

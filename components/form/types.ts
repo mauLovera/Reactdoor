@@ -9,9 +9,6 @@ export type FormDataType = {
   basePay: string
   yearsOfExperience: string
   rating: string
-  username: string
-  password: string
-  passwordConfirmation: string
 }
 
 export type FormErrorsType = {
@@ -24,9 +21,6 @@ export type FormErrorsType = {
   basePay: string
   yearsOfExperience: string
   rating: string
-  username: string
-  password: string
-  passwordConfirmation: string
 }
 
 export type FormType = {
