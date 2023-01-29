@@ -4,9 +4,29 @@
   margin-block: 32px;
   border-radius: var(--border-radius);
 
-  h3 {
-    font-size: var(--fs-h3);
-    font-weight: bold;
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding-bottom: 8px;
+
+    h3 {
+      margin: 0;
+      font-size: var(--fs-h3);
+      font-weight: bold;
+    }
+
+    button {
+      position: relative;
+      top: -1px;
+      background-color: var(--clr-secondary);
+      color: var(--clr-base);
+
+      border: none;
+      border-radius: var(--border-radius);
+      padding-inline: 16px;
+      transition: background-color 0.5s;
+      cursor: pointer;
+    }
   }
 }

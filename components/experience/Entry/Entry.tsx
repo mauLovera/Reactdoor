@@ -3,6 +3,7 @@ import styles from './Entry.module.scss'
 import moment from 'moment'
 
 interface Props {
+  _id: string
   jobTitle: string
   rating: string
   companyName: string
@@ -12,6 +13,8 @@ interface Props {
   current: string
   location: string
   yearsOfExperience: string
+  toggleDelete: boolean
+  handleDeleteEntry: (_id: string) => void
 }
 
 export default function Entry({
@@ -24,6 +27,9 @@ export default function Entry({
   current,
   location,
   yearsOfExperience,
+  _id,
+  toggleDelete,
+  handleDeleteEntry,
 }: Props) {
   // * Date * //
   const startingDate = moment(startDate)
@@ -44,33 +50,42 @@ export default function Entry({
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        {jobTitle}
-        <span className={styles.rating}>Rating: {renderStars(rating)}</span>
+      <div className={styles.left}>
+        <div className={styles.header}>
+          <div className={styles.jobTitle}>
+            <span>{jobTitle}</span>
+          </div>
+        </div>
+        <span className={styles.companyName}>
+          {companyName} · ${basePay} (Yearly)
+        </span>
+        <span className={styles.dates}>
+          <span>{formattedStartDate}</span>
+          {' - '}
+          <span>{current ? 'Present' : formattedEndDate}</span>
+          {' · '}
+          <span>{getDuration()}</span>
+        </span>
+        <span className={styles.location}>{location}</span>
+        <div className={styles.footer}>
+          <span className={styles.yearsOfExperience}>
+            Aquired with {yearsOfExperience} years of experience.
+          </span>
+        </div>
       </div>
-      <span className={styles.companyName}>
-        {companyName} · ${basePay} (Yearly)
-      </span>
-      <span className={styles.dates}>
-        <span>{formattedStartDate}</span>
-        {' - '}
-        <span>{current ? 'Present' : formattedEndDate}</span>
-        {' · '}
-        <span>{getDuration()}</span>
-      </span>
-      <span className={styles.location}>{location}</span>
-      <span className={styles.yearsOfExperience}>
-        Aquired with {yearsOfExperience} years of experience.
-      </span>
+      <div className={styles.right}>
+        <span className={styles.rating}>Rating: {renderStars(rating)}</span>
+        {toggleDelete && (
+          <button
+            className={styles.delete}
+            onClick={() => handleDeleteEntry(_id)}
+          >
+            Delete Experience
+          </button>
+        )}
+      </div>
     </div>
   )
-}
-
-Entry.defaultProps = {
-  rating: '3',
-  current: '',
-  startDate: '2021-01-01',
-  endDate: '2023-01-01',
 }
 
 function renderStars(rating: string) {

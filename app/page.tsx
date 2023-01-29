@@ -8,56 +8,7 @@ import { FormEntryType } from '@/utils/types'
 
 export default function Home() {
   // * state * //
-  const [formEntries, setFormEntries] = useState<FormEntryType[] | []>([
-    {
-      jobTitle: 'Software Engineering Fellow',
-      location: 'Miami, Florida',
-      companyName: 'General Assembly',
-      startDate: '2022-05-01',
-      endDate: '',
-      current: 'true',
-      basePay: '80000',
-      yearsOfExperience: '5',
-      rating: '5',
-      _id: '0698e18',
-    },
-    {
-      jobTitle: 'Bank Teller - Bilingual',
-      location: 'Miami, Florida',
-      companyName: 'Wells Fargo',
-      startDate: '2021-08-08',
-      endDate: '2022-11-11',
-      current: '',
-      basePay: '80000',
-      yearsOfExperience: '5',
-      rating: '5',
-      _id: '0698e18',
-    },
-    {
-      jobTitle: 'Verizon',
-      location: 'Miami, Florida',
-      companyName: 'Verizon',
-      startDate: '2020-06-06',
-      endDate: '2021-08-08',
-      current: '',
-      basePay: '80000',
-      yearsOfExperience: '5',
-      rating: '5',
-      _id: '0698e18',
-    },
-    {
-      jobTitle: 'Future Job',
-      location: 'Miami, Florida',
-      companyName: 'Verizon',
-      startDate: '2023-06-06',
-      endDate: '',
-      current: 'true',
-      basePay: '80000',
-      yearsOfExperience: '5',
-      rating: '5',
-      _id: '0698e18',
-    },
-  ])
+  const [formEntries, setFormEntries] = useState<FormEntryType[] | []>([])
 
   // * handle functions * //
   function handleAddEntry(newFormEntry: FormEntryType) {
@@ -103,14 +54,10 @@ export default function Home() {
   return (
     <main className={styles.container}>
       <FormContainer handleAddEntry={handleAddEntry} />
-      {formEntries.length ? (
-        <Experience
-          formEntries={formEntries}
-          handleDeleteEntry={handleDeleteEntry}
-        />
-      ) : (
-        ''
-      )}
+      <Experience
+        formEntries={formEntries}
+        handleDeleteEntry={handleDeleteEntry}
+      />
     </main>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import Entry from './Entry/Entry'
 import styles from './Experience.module.scss'
 import { FormEntryType } from '@/utils/types'
@@ -9,9 +9,19 @@ interface Props {
 }
 
 export default function Experience({ formEntries, handleDeleteEntry }: Props) {
+  const [toggleDelete, setToggleDelete] = useState<boolean>(false)
   return (
     <div className={styles.container}>
-      <h3>Experience</h3>
+      <div className={styles.header}>
+        <h3>Experience</h3>
+        {formEntries.length ? (
+          <button type="button" onClick={() => setToggleDelete(!toggleDelete)}>
+            <span>Edit</span>
+          </button>
+        ) : (
+          ''
+        )}
+      </div>
       {formEntries.length ? (
         formEntries.map((entry, index) => (
           <Entry
@@ -25,6 +35,9 @@ export default function Experience({ formEntries, handleDeleteEntry }: Props) {
             endDate={entry.endDate}
             rating={entry.rating}
             yearsOfExperience={entry.yearsOfExperience}
+            handleDeleteEntry={handleDeleteEntry}
+            toggleDelete={toggleDelete}
+            _id={entry._id as string}
           />
         ))
       ) : (
