@@ -44,7 +44,7 @@ export default function useMultiViewForm({ views }: Props) {
 
   function goTo(index: number) {
     setCurrentIndex((i) => {
-      if (index >= views.length - 1 || index <= 0) return i
+      if (index > views.length - 1 || index < 0) return i
       return index
     })
   }

@@ -17,6 +17,8 @@ export default function FormContainer() {
   const [activeFormData, setActiveFormData] =
     useState<FormType>(INITIAL_FORM_DATA)
 
+  const [focusedField, setFocusedField] = useState<string>('')
+
   // * useMultiFormView hook * //
   const {
     currentIndex,
@@ -39,8 +41,10 @@ export default function FormContainer() {
   const values = {
     activeFormData,
     setActiveFormData,
+    focusedField,
     handleInputChange,
     handleFormSubmit,
+    handleEditInput,
     currentIndex,
     currentView,
     isStart,
@@ -69,6 +73,11 @@ export default function FormContainer() {
     if (validateForm(data, errors, setActiveFormData, currentIndex)) {
       next()
     }
+  }
+
+  function handleEditInput(name: string, viewIndex: number) {
+    goTo(viewIndex)
+    setFocusedField(name)
   }
 
   return (

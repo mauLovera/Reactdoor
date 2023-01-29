@@ -8,56 +8,56 @@ import styles from './ConfirmField.module.scss'
 
 interface Props {
   name: string
+  viewIndex: number
 }
 
-export default function ConfirmField({ name }: Props) {
+export default function ConfirmField({ name, viewIndex }: Props) {
   const {
     activeFormData: { data },
+    handleEditInput,
   } = useContext(FormContext) as FormContextType
 
   const startDate = moment(data.startDate)
   const endDate = moment(data.endDate)
   const currentDate = moment(new Date())
-
-  const duration = startDate.diff(endDate, 'months')
-
   const formattedStartDate = startDate.format('MMMM DD, YYYY')
   const formattedEndDate = endDate.format('MMMM DD, YYYY')
+
+  function getDuration() {
+    let duration
+    if (data.current) {
+      duration = currentDate.diff(startDate, 'months')
+    } else {
+      duration = endDate.diff(startDate, 'months')
+    }
+    return duration === 1 ? `${duration} Month` : `${duration} Months`
+  }
 
   return (
     <div className={styles.container}>
       <div className={styles.field}>
-        {name === 'startDate' ? (
-          <>
-            <h4>
-              {formConfirmLabels[name as keyof typeof formConfirmLabels]}:
-            </h4>
-            <p>
+        <>
+          <h4>{formConfirmLabels[name as keyof typeof formConfirmLabels]}:</h4>
+          <p>
+            {name === 'startDate' ? (
               <span>
                 {formattedStartDate} -{' '}
                 {data.current ? 'Current' : formattedEndDate}{' '}
-                <span className={styles.grey}>
-                  (
-                  {duration === 1
-                    ? `${duration} Month`
-                    : `${duration} Months`}
-                  )
-                </span>
+                <span className={styles.grey}>({getDuration()})</span>
               </span>
-              <button type="button">[edit]</button>
-            </p>
-          </>
-        ) : (
-          <>
-            <h4>
-              {formConfirmLabels[name as keyof typeof formConfirmLabels]}:
-            </h4>
-            <p>
-              <span>{data[name as keyof typeof data]}</span>
-              <button type="button">[edit]</button>
-            </p>
-          </>
-        )}
+            ) : (
+              <>
+                <span>{data[name as keyof typeof data]}</span>
+              </>
+            )}
+            <button
+              type="button"
+              onClick={() => handleEditInput(name, viewIndex)}
+            >
+              [edit]
+            </button>
+          </p>
+        </>
       </div>
     </div>
   )

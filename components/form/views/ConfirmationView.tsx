@@ -16,15 +16,15 @@ export default function ConfirmationView() {
         <p className={styles.subHeader}>Your submission details are below.</p>
       </div>
       <div className={styles.section}>
-        <ConfirmField name="jobTitle" />
-        <ConfirmField name="location" />
-        <ConfirmField name="companyName" />
-        <ConfirmField name="startDate" />
+        <ConfirmField name="jobTitle" viewIndex={0} />
+        <ConfirmField name="location" viewIndex={0} />
+        <ConfirmField name="companyName" viewIndex={0} />
+        <ConfirmField name="startDate" viewIndex={0} />
       </div>
       <div className={styles.section}>
-        <ConfirmField name="basePay" />
-        <ConfirmField name="yearsOfExperience" />
-        <ConfirmField name="rating" />
+        <ConfirmField name="basePay" viewIndex={1} />
+        <ConfirmField name="yearsOfExperience" viewIndex={1} />
+        <ConfirmField name="rating" viewIndex={1} />
       </div>
     </div>
   )

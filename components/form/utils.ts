@@ -9,14 +9,14 @@ export const currentDate = `${year}-${month}-${day}`
 
 export const INITIAL_FORM_DATA = {
   data: {
-    jobTitle: 'Software Developer',
+    jobTitle: 'SWE',
     location: 'Miami, Florida',
     companyName: 'Glassdoor',
-    startDate: '2023-01-01',
-    endDate: '2021-01-01',
+    startDate: '2021-01-01',
+    endDate: '',
     current: 'true',
     basePay: '80000',
-    yearsOfExperience: '1',
+    yearsOfExperience: '5',
     rating: '5',
   },
   errors: {

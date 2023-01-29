@@ -35,8 +35,10 @@ export type SetActiveFormDataType = React.Dispatch<
 export type FormContextType = {
   activeFormData: FormType
   setActiveFormData: SetActiveFormDataType
+  focusedField: string
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   handleFormSubmit: (e: React.FormEvent<HTMLFormElement>) => void
+  handleEditInput: (name: string, viewIndex: number) => void
   currentIndex: number
   currentView: React.ReactNode
   isStart: boolean

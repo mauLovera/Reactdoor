@@ -10,21 +10,19 @@ interface Props {
   placeholder: string
   min: string
   max?: string
-  autoFocus?: boolean
 }
 
 export default function NumberField({
   name,
   label,
   placeholder,
-  autoFocus,
   min,
   max,
 }: Props) {
   const {
     handleInputChange,
     activeFormData: { data, errors },
-    setActiveFormData,
+    focusedField
   } = useContext(FormContext) as FormContextType
 
   return (
@@ -38,7 +36,7 @@ export default function NumberField({
         max={max ?? undefined}
         placeholder={placeholder}
         onChange={handleInputChange}
-        autoFocus={autoFocus ?? undefined}
+        autoFocus={focusedField === name}
         value={data[name as keyof FormDataType]}
         className={
           errors[name as keyof FormErrorsType] ? styles.errorInput : ''

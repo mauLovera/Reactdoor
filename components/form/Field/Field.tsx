@@ -9,8 +9,6 @@ interface Props {
   type: string
   label: string
   placeholder: string
-  autoFocus?: boolean
-  defaultChecked?: boolean
   min?: string
   max?: string
 }
@@ -20,8 +18,6 @@ export default function Field({
   type,
   label,
   placeholder,
-  autoFocus,
-  defaultChecked,
   min,
   max,
 }: Props) {
@@ -29,6 +25,7 @@ export default function Field({
     handleInputChange,
     activeFormData: { data, errors },
     setActiveFormData,
+    focusedField
   } = useContext(FormContext) as FormContextType
 
   useEffect(() => {
@@ -62,9 +59,9 @@ export default function Field({
             ? styles.errorInput
             : ''
         }
-        autoFocus={autoFocus ?? undefined}
+        autoFocus={focusedField === name}
         value={data[name as keyof FormDataType]}
-        defaultChecked={defaultChecked ?? undefined}
+        defaultChecked={data.current ? true : false}
         min={min ?? undefined}
         max={max ?? undefined}
       />

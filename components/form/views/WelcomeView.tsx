@@ -53,7 +53,6 @@ export default function WelcomeView() {
         type="checkbox"
         label={formLabels.current}
         placeholder=""
-        defaultChecked
       />
       {!data.current && (
         <Field
