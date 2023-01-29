@@ -47,7 +47,7 @@ export default function Experience({
         ))
       ) : (
         <p>
-          {isLoading ? 'Loading...' : 'No entries found.'}
+          {isLoading ? '' : 'No entries found.'}
         </p>
       )}
     </div>
