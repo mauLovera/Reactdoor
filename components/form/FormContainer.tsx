@@ -18,7 +18,6 @@ import WelcomeView from './views/WelcomeView'
 import SalaryView from './views/SalaryView'
 import ConfirmationView from './views/ConfirmationView'
 
-
 export const FormContext = createContext<FormContextType | null>(null)
 
 interface Props {
@@ -91,11 +90,15 @@ export default function FormContainer({ handleAddEntry }: Props) {
     e.preventDefault()
     if (validateForm(data, errors, setActiveFormData, currentIndex)) {
       next()
-      if (isEnd) {
+      if (isEnd && !isSubmitted) {
         setIsSubmitted(true)
         const newFormEntry = Object.assign({}, activeFormData.data)
         newFormEntry._id = v4().slice(0, 7)
         handleAddEntry(newFormEntry)
+      } else if (isEnd && isSubmitted) {
+        setIsSubmitted(false)
+        setActiveFormData(INITIAL_FORM_DATA)
+        goTo(0)
       }
     }
   }

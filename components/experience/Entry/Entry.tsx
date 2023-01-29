@@ -69,7 +69,11 @@ export default function Entry({
         <span className={styles.location}>{location}</span>
         <div className={styles.footer}>
           <span className={styles.yearsOfExperience}>
-            Aquired with {yearsOfExperience} years of experience.
+            Aquired with{' '}
+            {Number(yearsOfExperience) === 1
+              ? `${yearsOfExperience} year`
+              : `${yearsOfExperience} years`}{' '}
+            of experience.
           </span>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { useContext } from 'react'
 import { FormContext } from '../FormContainer'
 import { FormContextType } from '../types'
@@ -7,8 +8,10 @@ export default function Submit() {
   const { isEnd, isSubmitted } = useContext(FormContext) as FormContextType
   return (
     <div className={styles.container}>
-      {!isSubmitted && (
+      {!isSubmitted ? (
         <button type="submit">{isEnd ? 'Submit' : 'Continue'}</button>
+      ) : (
+        <button type="submit">Add more experience</button>
       )}
     </div>
   )
