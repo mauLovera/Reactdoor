@@ -1,15 +1,18 @@
-import { FormEntryContextType } from '@/utils/types'
-import { FormEntryContext } from 'context/FormEntryContext'
-
 import React, { useContext } from 'react'
 import Entry from './Entry/Entry'
 import styles from './Experience.module.scss'
+import { FormEntryType } from '@/utils/types'
 
-export default function Experience() {
+interface Props {
+  formEntries: FormEntryType[]
+  handleDeleteEntry: (id: string) => void
+}
+
+export default function Experience({ formEntries, handleDeleteEntry }: Props) {
   return (
     <div className={styles.container}>
       <h3>Experience</h3>
-      {/* {formEntries &&
+      {formEntries.length ? (
         formEntries.map((entry, index) => (
           <Entry
             key={index}
@@ -23,7 +26,10 @@ export default function Experience() {
             rating={entry.rating}
             yearsOfExperience={entry.yearsOfExperience}
           />
-        ))} */}
+        ))
+      ) : (
+        <p>No entries found.</p>
+      )}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-export type FromEntryType = {
+export type FormEntryType = {
   _id?: string
   jobTitle: string
   location: string
@@ -11,8 +11,3 @@ export type FromEntryType = {
   rating: string
 }
 
-export type FormEntryContextType = {
-  handleAddEntry: (newFormEntry: FromEntryType) => void
-  handleDeleteEntry: (id: string) => void
-  formEntries: [] | FromEntryType[]
-}

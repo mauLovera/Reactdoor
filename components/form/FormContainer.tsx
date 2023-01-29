@@ -6,23 +6,26 @@ import { v4 } from 'uuid'
 // * hooks & context * //
 import useMultiViewForm from 'hooks/useMultiViewForm'
 
-
 // * utils  & types * //
 import { INITIAL_FORM_DATA } from './utils'
 import { validateForm } from '@/utils/validateForm'
 import { FormContextType, FormType } from './types'
-import { FormEntryContextType } from '@/utils/types'
+import { FormEntryType } from '@/utils/types'
 
 // * components * //
 import Form from './Form'
 import WelcomeView from './views/WelcomeView'
 import SalaryView from './views/SalaryView'
 import ConfirmationView from './views/ConfirmationView'
-import { FormEntryContext } from 'context/FormEntryContext'
 
 
 export const FormContext = createContext<FormContextType | null>(null)
-export default function FormContainer() {
+
+interface Props {
+  handleAddEntry: (newFormEntry: FormEntryType) => void
+}
+
+export default function FormContainer({ handleAddEntry }: Props) {
   // * state * //
   const [activeFormData, setActiveFormData] =
     useState<FormType>(INITIAL_FORM_DATA)
@@ -92,6 +95,7 @@ export default function FormContainer() {
         setIsSubmitted(true)
         const newFormEntry = Object.assign({}, activeFormData.data)
         newFormEntry._id = v4().slice(0, 7)
+        handleAddEntry(newFormEntry)
       }
     }
   }
