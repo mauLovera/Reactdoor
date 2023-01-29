@@ -1,4 +1,4 @@
-import React, { Suspense, useContext, useState } from 'react'
+import React, { Suspense, useContext, useEffect, useState } from 'react'
 import Entry from './Entry/Entry'
 import styles from './Experience.module.scss'
 import { FormEntryType } from '@/utils/types'
@@ -46,9 +46,7 @@ export default function Experience({
           />
         ))
       ) : (
-        <p>
-          {isLoading ? '' : 'No entries found.'}
-        </p>
+        <p>{isLoading ? '' : 'No entries found.'}</p>
       )}
     </div>
   )

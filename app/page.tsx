@@ -10,6 +10,7 @@ export default function Home() {
   // * state * //
   const [formEntries, setFormEntries] = useState<FormEntryType[] | []>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
+  
 
   useEffect(() => {
     const data = window.localStorage.getItem('FORM_ENTRIES')
