@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   padding-block: 16px;
-  padding-left: 8px;
 
   .header {
     display: flex;
@@ -13,6 +12,10 @@
 
     .rating {
       font-weight: 400;
+      
+      .deactiveStar {
+        filter: grayscale(1);
+      }
     }
   }
 

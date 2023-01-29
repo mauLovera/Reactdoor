@@ -20,10 +20,10 @@ export default function ConfirmField({ name, viewIndex }: Props) {
 
   const startDate = moment(data.startDate)
   const endDate = moment(data.endDate)
-  const currentDate = moment(new Date())
   const formattedStartDate = startDate.format('MMMM DD, YYYY')
   const formattedEndDate = endDate.format('MMMM DD, YYYY')
-
+  const currentDate = moment(new Date())
+  
   function getDuration() {
     let duration
     if (data.current) {

@@ -1,7 +1,6 @@
 import {
   FormDataType,
   FormErrorsType,
-  FormType,
   SetActiveFormDataType,
 } from '@/components/form/types'
 
@@ -97,9 +96,7 @@ function validateDataFields(
       }
     }
     for (const key in invalidValue.viewTwo) {
-      if (
-        data[key as keyof typeof invalidValue.viewTwo].includes('-') 
-      ) {
+      if (data[key as keyof typeof invalidValue.viewTwo].includes('-')) {
         setActiveFormData((previousFormData) => ({
           data: { ...previousFormData.data },
           errors: {

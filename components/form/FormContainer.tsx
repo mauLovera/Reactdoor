@@ -1,17 +1,27 @@
 'use client'
+// * libraries * //
+import React, { useState, createContext, useContext } from 'react'
+import { v4 } from 'uuid'
 
-import Form from './Form'
-import React, { useState, createContext } from 'react'
-import { FormContextType, FormType } from './types'
-import { INITIAL_FORM_DATA } from './utils'
+// * hooks & context * //
 import useMultiViewForm from 'hooks/useMultiViewForm'
-import WelcomeView from './views/WelcomeView'
+
+
+// * utils  & types * //
+import { INITIAL_FORM_DATA } from './utils'
 import { validateForm } from '@/utils/validateForm'
+import { FormContextType, FormType } from './types'
+import { FormEntryContextType } from '@/utils/types'
+
+// * components * //
+import Form from './Form'
+import WelcomeView from './views/WelcomeView'
 import SalaryView from './views/SalaryView'
 import ConfirmationView from './views/ConfirmationView'
+import { FormEntryContext } from 'context/FormEntryContext'
+
 
 export const FormContext = createContext<FormContextType | null>(null)
-
 export default function FormContainer() {
   // * state * //
   const [activeFormData, setActiveFormData] =
@@ -80,6 +90,8 @@ export default function FormContainer() {
       next()
       if (isEnd) {
         setIsSubmitted(true)
+        const newFormEntry = Object.assign({}, activeFormData.data)
+        newFormEntry._id = v4().slice(0, 7)
       }
     }
   }
