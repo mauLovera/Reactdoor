@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { Suspense, useContext, useState } from 'react'
 import Entry from './Entry/Entry'
 import styles from './Experience.module.scss'
 import { FormEntryType } from '@/utils/types'
@@ -6,9 +6,14 @@ import { FormEntryType } from '@/utils/types'
 interface Props {
   formEntries: FormEntryType[]
   handleDeleteEntry: (id: string) => void
+  isLoading: boolean
 }
 
-export default function Experience({ formEntries, handleDeleteEntry }: Props) {
+export default function Experience({
+  formEntries,
+  handleDeleteEntry,
+  isLoading,
+}: Props) {
   const [toggleDelete, setToggleDelete] = useState<boolean>(false)
   return (
     <div className={styles.container}>
@@ -16,7 +21,7 @@ export default function Experience({ formEntries, handleDeleteEntry }: Props) {
         <h3>Experience</h3>
         {formEntries.length ? (
           <button type="button" onClick={() => setToggleDelete(!toggleDelete)}>
-            <span>Edit</span>
+            <span>{toggleDelete ? 'Stop Editing' : 'Edit'}</span>
           </button>
         ) : (
           ''
@@ -41,7 +46,9 @@ export default function Experience({ formEntries, handleDeleteEntry }: Props) {
           />
         ))
       ) : (
-        <p>No entries found.</p>
+        <p>
+          {isLoading ? 'Loading...' : 'No entries found.'}
+        </p>
       )}
     </div>
   )

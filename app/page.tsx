@@ -3,12 +3,26 @@
 import styles from '@/styles/pages/root.module.scss'
 import FormContainer from '@/components/form/FormContainer'
 import Experience from '@/components/experience/Experience'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { FormEntryType } from '@/utils/types'
 
 export default function Home() {
   // * state * //
   const [formEntries, setFormEntries] = useState<FormEntryType[] | []>([])
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+
+  useEffect(() => {
+    const data = window.localStorage.getItem('FORM_ENTRIES')
+    if (data !== null) {
+      const dataObject = JSON.parse(data)
+      setFormEntries((prev) => [...prev, ...dataObject])
+    }
+    setIsLoading(false)
+  }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem('FORM_ENTRIES', JSON.stringify(formEntries))
+  }, [formEntries])
 
   // * handle functions * //
   function handleAddEntry(newFormEntry: FormEntryType) {
@@ -57,6 +71,7 @@ export default function Home() {
       <Experience
         formEntries={formEntries}
         handleDeleteEntry={handleDeleteEntry}
+        isLoading={isLoading}
       />
     </main>
   )
