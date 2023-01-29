@@ -15,6 +15,7 @@ export default function ConfirmField({ name, viewIndex }: Props) {
   const {
     activeFormData: { data },
     handleEditInput,
+    isSubmitted,
   } = useContext(FormContext) as FormContextType
 
   const startDate = moment(data.startDate)
@@ -42,7 +43,7 @@ export default function ConfirmField({ name, viewIndex }: Props) {
             {name === 'startDate' ? (
               <span>
                 {formattedStartDate} -{' '}
-                {data.current ? 'Current' : formattedEndDate}{' '}
+                {data.current ? 'Present' : formattedEndDate}{' '}
                 <span className={styles.grey}>({getDuration()})</span>
               </span>
             ) : (
@@ -50,12 +51,14 @@ export default function ConfirmField({ name, viewIndex }: Props) {
                 <span>{data[name as keyof typeof data]}</span>
               </>
             )}
-            <button
-              type="button"
-              onClick={() => handleEditInput(name, viewIndex)}
-            >
-              [edit]
-            </button>
+            {!isSubmitted && (
+              <button
+                type="button"
+                onClick={() => handleEditInput(name, viewIndex)}
+              >
+                [edit]
+              </button>
+            )}
           </p>
         </>
       </div>

@@ -4,10 +4,10 @@ import { FormContextType } from '../types'
 import styles from './Navigation.module.scss'
 
 export default function Navigation() {
-  const { isStart, back } = useContext(FormContext) as FormContextType
+  const { isStart, back, isSubmitted } = useContext(FormContext) as FormContextType
   return (
     <div className={styles.container}>
-      {isStart ? (
+      {isStart || isSubmitted ? (
         <span className={styles.inactive}>Back</span>
       ) : (
         <button type="button" onClick={back}>

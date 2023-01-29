@@ -4,10 +4,12 @@ import { FormContextType } from '../types'
 import styles from './Submit.module.scss'
 
 export default function Submit() {
-  const { isEnd } = useContext(FormContext) as FormContextType
+  const { isEnd, isSubmitted } = useContext(FormContext) as FormContextType
   return (
     <div className={styles.container}>
-      <button type="submit">{isEnd ? 'Submit' : 'Continue'}</button>
+      {!isSubmitted && (
+        <button type="submit">{isEnd ? 'Submit' : 'Continue'}</button>
+      )}
     </div>
   )
 }

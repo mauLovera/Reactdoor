@@ -16,8 +16,8 @@ export default function FormContainer() {
   // * state * //
   const [activeFormData, setActiveFormData] =
     useState<FormType>(INITIAL_FORM_DATA)
-
   const [focusedField, setFocusedField] = useState<string>('')
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false)
 
   // * useMultiFormView hook * //
   const {
@@ -40,8 +40,9 @@ export default function FormContainer() {
   // * context values * //
   const values = {
     activeFormData,
-    setActiveFormData,
     focusedField,
+    isSubmitted,
+    setActiveFormData,
     handleInputChange,
     handleFormSubmit,
     handleEditInput,
@@ -67,17 +68,20 @@ export default function FormContainer() {
     }))
   }
 
+  function handleEditInput(name: string, viewIndex: number) {
+    goTo(viewIndex)
+    setFocusedField(name)
+  }
+
   function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
     const { data, errors } = activeFormData
     e.preventDefault()
     if (validateForm(data, errors, setActiveFormData, currentIndex)) {
       next()
+      if (isEnd) {
+        setIsSubmitted(true)
+      }
     }
-  }
-
-  function handleEditInput(name: string, viewIndex: number) {
-    goTo(viewIndex)
-    setFocusedField(name)
   }
 
   return (

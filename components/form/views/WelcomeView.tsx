@@ -15,7 +15,7 @@ interface Props {
 
 export default function WelcomeView() {
   const {
-    activeFormData: { data },
+    activeFormData: { data }
   } = useContext(FormContext) as FormContextType
   return (
     <div className={styles.container}>

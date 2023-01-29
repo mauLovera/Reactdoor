@@ -1,0 +1,12 @@
+.container {
+  background-color: var(--clr-base);
+  padding: 16px;
+  margin-block: 32px;
+  border-radius: var(--border-radius);
+
+  h3 {
+    font-size: var(--fs-h3);
+    font-weight: bold;
+    padding-bottom: 8px;
+  }
+}

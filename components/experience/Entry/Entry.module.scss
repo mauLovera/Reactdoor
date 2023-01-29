@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding-block: 16px;
+  padding-left: 8px;
+
+  .header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 18px;
+
+    .rating {
+      font-weight: 400;
+    }
+  }
+
+  .companyName {
+    font-size: 16px;
+  }
+
+  .dates {
+    color: var(--clr-neutral-light);
+  }
+
+  .location {
+    color: var(--clr-neutral-light);
+  }
+
+  .yearsOfExperience {
+    color: var(--clr-neutral-light);
+  }
+}
+
+.container:not(:last-child) {
+  border-bottom: 1px solid var(--clr-border);
+}

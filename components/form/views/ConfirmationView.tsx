@@ -11,10 +11,7 @@ export default function ConfirmationView() {
   } = useContext(FormContext) as FormContextType
   return (
     <div className={styles.container}>
-      <div className={styles.banner}>
-        <h4 className={styles.header}>Please confirm your answers.</h4>
-        <p className={styles.subHeader}>Your submission details are below.</p>
-      </div>
+      <Banner />
       <div className={styles.section}>
         <ConfirmField name="jobTitle" viewIndex={0} />
         <ConfirmField name="location" viewIndex={0} />
@@ -27,5 +24,25 @@ export default function ConfirmationView() {
         <ConfirmField name="rating" viewIndex={1} />
       </div>
     </div>
+  )
+}
+
+function Banner() {
+  const { isSubmitted } = useContext(FormContext) as FormContextType
+  return (
+    <>
+      <div
+        className={`${styles.banner} ${isSubmitted ? styles.submitted : ''}`}
+      >
+        <h4 className={styles.header}>
+          {isSubmitted
+            ? 'Thanks! Your answers have been submitted.'
+            : 'Please confirm your answers.'}
+        </h4>
+        <p className={styles.subHeader}>
+          Your submission details are below.
+        </p>
+      </div>
+    </>
   )
 }

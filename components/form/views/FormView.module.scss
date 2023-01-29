@@ -12,6 +12,10 @@
     }
   }
 
+  .submitted {
+    background-color: var(--clr-primary-light);
+  }
+
   .header {
     font-size: var(--fs-h4);
     font-weight: bold;
