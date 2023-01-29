@@ -12,7 +12,7 @@ export const INITIAL_FORM_DATA = {
     jobTitle: 'SWE',
     location: 'Miami, Florida',
     companyName: 'Glassdoor',
-    startDate: '2021-01-01',
+    startDate: '2023-02-02',
     endDate: '',
     current: 'true',
     basePay: '80000',
