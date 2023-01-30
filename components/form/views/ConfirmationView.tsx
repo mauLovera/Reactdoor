@@ -45,9 +45,7 @@ function Banner() {
             ? 'Thanks! Your answers have been submitted.'
             : 'Please confirm your answers.'}
         </h4>
-        <p className={styles.subHeader}>
-          Your submission details are below.
-        </p>
+        <p className={styles.subHeader}>Your submission details are below.</p>
       </div>
     </>
   )

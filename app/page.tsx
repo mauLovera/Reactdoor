@@ -31,6 +31,13 @@ export default function Home() {
   }, [formEntries])
 
   // * handle functions * //
+
+  /**
+   * @function handleAddEntry
+   * @description sort and add newFormEntry into formEntries array 
+   * @params {newFormEntry}: FormEntryType
+   */
+
   function handleAddEntry(newFormEntry: FormEntryType) {
     const sortedEntriesArray = [...formEntries, newFormEntry].sort((a, b) => {
       /*
@@ -59,6 +66,12 @@ export default function Home() {
     })
     setFormEntries(sortedEntriesArray)
   }
+
+  /**
+   * @function handleDeleteEntry
+   * @description delete an entry from formEntries 
+   * @params {id}: string
+   */
 
   function handleDeleteEntry(id: string) {
     setFormEntries(formEntries.filter((entry) => entry._id !== id))

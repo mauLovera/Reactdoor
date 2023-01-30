@@ -37,6 +37,12 @@ export default function Entry({
   const formattedStartDate = startingDate.format('MMMM YYYY')
   const formattedEndDate = endingDate.format('MMMM YYYY')
 
+  /**
+   * @function getDuration
+   * @description get duration from active dates 
+   * @returns string
+   */
+
   function getDuration() {
     let duration
     if (current) {
