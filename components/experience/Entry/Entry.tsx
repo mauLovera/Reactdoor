@@ -1,6 +1,5 @@
-import React from 'react'
-import styles from './Entry.module.scss'
 import moment from 'moment'
+import styles from './Entry.module.scss'
 
 interface Props {
   _id: string

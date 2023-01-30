@@ -1,7 +1,12 @@
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
+
+// * context * //
 import { FormContext } from '../FormContainer'
+
+// * utils & types * //
 import { FormContextType, FormDataType, FormErrorsType } from '../types'
 import { renderError } from '../utils'
+
 import styles from './NumberField.module.scss'
 
 interface Props {

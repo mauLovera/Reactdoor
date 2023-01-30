@@ -1,6 +1,11 @@
 import { useContext } from 'react'
+
+// * context * //
 import { FormContext } from '../FormContainer'
+
+// * utils & types * //
 import { FormContextType } from '../types'
+
 import styles from './Navigation.module.scss'
 
 export default function Navigation() {

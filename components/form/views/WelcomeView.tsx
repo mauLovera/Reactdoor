@@ -1,17 +1,16 @@
 import { useContext } from 'react'
+
+// * context * //
 import { FormContext } from '../FormContainer'
+
+// * components * //
+import Field from '../Field/Field'
+
+// * utils & types * //
 import { FormContextType } from '../types'
 import { currentDate, formLabels } from '../utils'
-import Field from '../Field/Field'
-import styles from './FormView.module.scss'
 
-interface Props {
-  name: string
-  type: string
-  label: string
-  placeholder: string
-  autoFocus?: boolean
-}
+import styles from './FormView.module.scss'
 
 export default function WelcomeView() {
   const {

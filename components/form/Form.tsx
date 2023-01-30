@@ -1,10 +1,15 @@
 import { useContext } from 'react'
-import { FormContext } from './FormContainer'
-import { FormContextType } from './types'
 
+// * context * //
+import { FormContext } from './FormContainer'
+
+// * components * //
 import ProgressBar from './ProgressBar/ProgressBar'
 import Navigation from './Navigation/Navigation'
 import Submit from './Submit/Submit'
+
+// * utils & types * //
+import { FormContextType } from './types'
 
 import styles from './Form.module.scss'
 

@@ -1,17 +1,21 @@
 'use client'
+import { useState, useEffect } from 'react'
 
-import styles from '@/styles/pages/root.module.scss'
+// * components * //
 import FormContainer from '@/components/form/FormContainer'
 import Experience from '@/components/experience/Experience'
-import { useState, useEffect } from 'react'
+
+// * utils & types * //
 import { FormEntryType } from '@/utils/types'
+
+import styles from '@/styles/pages/root.module.scss'
 
 export default function Home() {
   // * state * //
   const [formEntries, setFormEntries] = useState<FormEntryType[] | []>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
-  
 
+  // * retrieve entries from local storage * //
   useEffect(() => {
     const data = window.localStorage.getItem('FORM_ENTRIES')
     if (data !== null) {
@@ -21,6 +25,7 @@ export default function Home() {
     setIsLoading(false)
   }, [])
 
+  // * set entries to local storage * //
   useEffect(() => {
     window.localStorage.setItem('FORM_ENTRIES', JSON.stringify(formEntries))
   }, [formEntries])
@@ -30,14 +35,10 @@ export default function Home() {
     const sortedEntriesArray = [...formEntries, newFormEntry].sort((a, b) => {
       /*
         Reverse chronological order would be the youngest (or greatest) at the top.
-    
         1	sort a then b
         -1 sort b then a
         === 0	keep original order of a and b 
-      
-        */
-
-      // If they are both current positions...
+      */
       if (a.current && b.current) {
         // If a.startDate is younger than b.startDate => sort b then a
         // 2023(a) > 2021(b) => [2021, 2023]
@@ -49,16 +50,13 @@ export default function Home() {
           return 0
         }
       }
-
       if (new Date(a.startDate) > new Date(b.startDate)) {
         return -1
       }
-
       // if it is not current or younger then keep insertion order...
       // a then b
       return 0
     })
-
     setFormEntries(sortedEntriesArray)
   }
 

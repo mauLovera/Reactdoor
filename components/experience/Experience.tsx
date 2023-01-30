@@ -1,7 +1,12 @@
-import React, { Suspense, useContext, useEffect, useState } from 'react'
+import React, { useState } from 'react'
+
+// * components * //
 import Entry from './Entry/Entry'
-import styles from './Experience.module.scss'
+
+// * utils & types * //
 import { FormEntryType } from '@/utils/types'
+
+import styles from './Experience.module.scss'
 
 interface Props {
   formEntries: FormEntryType[]

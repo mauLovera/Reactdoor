@@ -1,8 +1,12 @@
 import { useContext } from 'react'
+import moment from 'moment'
+
+// * context * //
 import { FormContext } from '../FormContainer'
+
+// * utils & types * //
 import { FormContextType } from '../types'
 import { formConfirmLabels } from '../utils'
-import moment from 'moment'
 
 import styles from './ConfirmField.module.scss'
 
