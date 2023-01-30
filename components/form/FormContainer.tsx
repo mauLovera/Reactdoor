@@ -69,6 +69,13 @@ export default function FormContainer({ handleAddEntry }: Props) {
   }
 
   // * handle functions * //
+
+  /**
+   * @function handleInputChange
+   * @description update activeFormData to match input field
+   * @params {e} input event
+   */
+
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value, type, checked } = e.target
     setActiveFormData((previousFormData) => ({
@@ -80,10 +87,23 @@ export default function FormContainer({ handleAddEntry }: Props) {
     }))
   }
 
+  /**
+   * @function handleEditInput
+   * @description change current view to passed index and setFocusedField to passed field name
+   * @params {name} string, {viewIndex} number
+   */
+
   function handleEditInput(name: string, viewIndex: number) {
     goTo(viewIndex)
     setFocusedField(name)
   }
+
+  
+  /**
+   * @function handleFormSubmit
+   * @description validate form, change view index, and setSubmitted
+   * @params {e} form event
+   */
 
   function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
     const { data, errors } = activeFormData

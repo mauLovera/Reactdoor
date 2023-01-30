@@ -27,6 +27,13 @@ const errorMessages = {
   },
 }
 
+/**
+ * @function validateForm
+ * @description validate from through reseting error fields and checking for valid inputs
+ * @params {data} FormDataType, {errors} FormErrorsType, setActiveFormData: SetActiveFormDataType, currentIndex: number
+ * @returns boolean
+ */
+
 export function validateForm(
   data: FormDataType,
   errors: FormErrorsType,
@@ -37,6 +44,12 @@ export function validateForm(
   resetErrorFields(errors, setActiveFormData)
   return validateDataFields(data, setActiveFormData, currentIndex, isValidForm)
 }
+
+/**
+ * @function resetErrorFields
+ * @description iterate through and reset error fields
+ * @params  {errors} FormErrorsType, setActiveFormData: SetActiveFormDataType
+ */
 
 function resetErrorFields(
   errors: FormErrorsType,
@@ -49,6 +62,12 @@ function resetErrorFields(
     }))
   }
 }
+
+/**
+ * @function validateDataFields
+ * @description iterate through and validate data fields
+ * @params  {data} FormDataType, {setActiveFormData} SetActiveFormDataType, {currentIndex} number, {isValidForm} boolean
+ */
 
 function validateDataFields(
   data: FormDataType,

@@ -1,6 +1,5 @@
-import React from 'react'
-import styles from './Entry.module.scss'
 import moment from 'moment'
+import styles from './Entry.module.scss'
 
 interface Props {
   _id: string
@@ -37,6 +36,12 @@ export default function Entry({
   const currentDate = moment(new Date())
   const formattedStartDate = startingDate.format('MMMM YYYY')
   const formattedEndDate = endingDate.format('MMMM YYYY')
+
+  /**
+   * @function getDuration
+   * @description get duration from active dates 
+   * @returns string
+   */
 
   function getDuration() {
     let duration

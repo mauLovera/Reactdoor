@@ -1,7 +1,12 @@
 import { useContext, useEffect } from 'react'
+
+// * components * //
 import { FormContext } from '../FormContainer'
+
+// * utils & types * //
 import { FormContextType, FormDataType, FormErrorsType } from '../types'
 import { renderError } from '../utils'
+
 import styles from './Field.module.scss'
 
 interface Props {
@@ -28,6 +33,7 @@ export default function Field({
     focusedField
   } = useContext(FormContext) as FormContextType
 
+  // * if endDate is changed to before startDate => update startDate * //
   useEffect(() => {
     if (new Date(data.startDate) > new Date(data.endDate)) {
       setActiveFormData((previousFormData) => ({

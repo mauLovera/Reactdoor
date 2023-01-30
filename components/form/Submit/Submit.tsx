@@ -1,7 +1,11 @@
-import Link from 'next/link'
 import { useContext } from 'react'
+
+// * context * //
 import { FormContext } from '../FormContainer'
+
+// * utils & types * //
 import { FormContextType } from '../types'
+
 import styles from './Submit.module.scss'
 
 export default function Submit() {

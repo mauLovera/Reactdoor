@@ -14,6 +14,10 @@
     justify-content: space-between;
   }
 
+  @media (max-width: 500px) {
+    flex-direction: column;
+  }
+
   .header {
     display: flex;
     width: 100%;
@@ -43,6 +47,7 @@
   .footer {
     display: flex;
     justify-content: space-between;
+
     .yearsOfExperience {
       color: var(--clr-neutral-light);
     }
@@ -50,7 +55,7 @@
 
   .rating {
     font-weight: 400;
-
+    
     .deactiveStar {
       filter: grayscale(1);
     }

@@ -1,8 +1,12 @@
 import { useContext } from 'react'
+import moment from 'moment'
+
+// * context * //
 import { FormContext } from '../FormContainer'
+
+// * utils & types * //
 import { FormContextType } from '../types'
 import { formConfirmLabels } from '../utils'
-import moment from 'moment'
 
 import styles from './ConfirmField.module.scss'
 
@@ -23,7 +27,13 @@ export default function ConfirmField({ name, viewIndex }: Props) {
   const formattedStartDate = startDate.format('MMMM DD, YYYY')
   const formattedEndDate = endDate.format('MMMM DD, YYYY')
   const currentDate = moment(new Date())
-  
+
+  /**
+   * @function getDuration
+   * @description get duration from active dates
+   * @returns string
+   */
+
   function getDuration() {
     let duration
     if (data.current) {

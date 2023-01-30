@@ -1,8 +1,14 @@
 import { useContext } from 'react'
-import ConfirmField from '../ConfirmField/ConfirmField'
+
+// * context * //
 import { FormContext } from '../FormContainer'
+
+// * components * //
+import ConfirmField from '../ConfirmField/ConfirmField'
+
+// * utils & types * //
 import { FormContextType } from '../types'
-import { formConfirmLabels } from '../utils'
+
 import styles from './FormView.module.scss'
 
 export default function ConfirmationView() {
@@ -39,9 +45,7 @@ function Banner() {
             ? 'Thanks! Your answers have been submitted.'
             : 'Please confirm your answers.'}
         </h4>
-        <p className={styles.subHeader}>
-          Your submission details are below.
-        </p>
+        <p className={styles.subHeader}>Your submission details are below.</p>
       </div>
     </>
   )

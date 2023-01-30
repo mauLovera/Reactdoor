@@ -1,15 +1,19 @@
 import { useContext } from 'react'
+
+// * context * //
 import { FormContext } from '../FormContainer'
+
+// * utils & types * //
 import { FormContextType } from '../types'
+
 import styles from './RadioField.module.scss'
 
 interface Props {
   name: string
   label: string
-  max: number
 }
 
-export default function RadioField({ name, label, max }: Props) {
+export default function RadioField({ name, label }: Props) {
   const {
     handleInputChange,
     activeFormData: { data },
